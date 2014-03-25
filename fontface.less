@@ -1,0 +1,99 @@
+/**
+*   @font-face LESS Mixin, Variable and declaration block
+*
+*   Developed with <3 by @elyrium
+*   @created in January 2014
+*   last update: January 2014
+*
+*
+*/
+
+
+
+
+// Variables
+//-------------------------------------
+
+// Webfonts Path
+@fontPath: "/webfonts"; // path to where the webfonts are stored on your server
+
+
+// OpenSans Example
+@FontOpenSansPath:   "@{fontPath}opensans";  // you can have multiple webfonts folders
+
+@os-family-light:       OpenSansLight;
+@os-src-light:          OpenSans-Light;
+
+@os-family-regular:     OpenSansRegular;
+@os-src-regular:        OpenSans-Regular;
+
+@os-family-italic:      OpenSansItalic;
+@os-src-italic:         OpenSans-Italic;
+
+@os-family-bold:        OpenSansBold;
+@os-src-bold:           OpenSans-Bold;
+
+@os-family-condLight:   OpenSansCondensedLight;
+@os-src-condLight:      OpenSans-CondLight;
+
+
+
+// Mixin
+//-------------------------------------
+
+// Base
+// use these if you are importing webfonts that have bold and italic styles
+.webfont-reset() {
+  font-style: normal;
+  font-weight: normal;
+}
+.webfont-smooth() {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+// Font Features
+// ligatures
+
+// Source paths 
+.webfont-fontface (@font-path, @font-family, @font-src) {
+    font-family: '@{font-family}';
+    src: url('@{font-path}/@{font-src}-webfont.eot');
+    src: url('@{font-path}/@{font-src}-webfont.eot?#iefix') format('embedded-opentype'),
+         url('@{font-path}/@{font-src}-webfont.woff') format('woff'),
+         url('@{font-path}/@{font-src}-webfont.ttf') format('truetype'),
+         url('@{font-path}/@{font-src}-webfont.svg#@{font-family}') format('svg');
+    .webfont-reset();
+    .webfont-smooth();
+}
+
+
+
+// Webfont imports
+//-------------------------------------
+
+// OpenSans Typeface Example
+@font-face {
+    .webfont-fontface (@FontOpenSansPath, @os-family-light, @os-src-light);
+}
+
+@font-face {
+    .webfont-fontface (@FontOpenSansPath, @os-family-regular, @os-src-regular);
+}
+
+@font-face {
+    .webfont-fontface (@FontOpenSansPath, @os-family-italic, @os-src-italic);
+}
+
+@font-face {
+    .webfont-fontface (@FontOpenSansPath, @os-family-bold, @os-src-bold);
+}
+
+@font-face {
+    .webfont-fontface (@FontOpenSansPath, @os-family-condLight, @os-src-condLight);
+}
+
+
+
+
